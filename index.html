@@ -1,18 +1,62 @@
 <!doctype html>
 <head>
 <meta charset="utf-8">
+<title>
+Ethereum Address Identicon Generator
+</title>
 <style>
-canvas {
-	margin: 10px;
+#resultIcon {
+  outline: 1px solid black;
+  width: 128px;
+  height: 128px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 </style>
+
 </head>
 <body>
+<h1>
+Ethereum Address Identicon Generator
+</h1>
+
+<input id="addressInput" type="text" placeholder="Ethereum address" />
+<br/>
+<br/>
+
+<div id="resultMessage"></div>
+
+Icon: <br/>
+<p id="resultIcon"></p>
+DataURL: <br/>
+<p>
+  <textarea id="resultDataUrl" readonly cols=40 rows=20></textarea>
+</p>
+
 <script src="blockies.js"></script>
 <script>
-for(var i = 0; i < 250; i++) {
-	var icon = blockies.create();
-	document.body.appendChild(icon);
-}
+
+const addressInput = document.getElementById("addressInput");
+const resultMessage = document.getElementById("resultMessage");
+const resultIcon = document.getElementById("resultIcon");
+const resultDataUrl = document.getElementById("resultDataUrl");
+
+
+addressInput.oninput = () => {
+  const address = addressInput.value.toLowerCase();
+  let dataUrl;
+
+  if (address === "") return;
+
+  if (/^0x[0-9a-f]{40}$/.test(address)) {
+    const dataUrl = blockies.create({ seed:address, size: 8, scale: 16}).toDataURL();
+    resultMessage.innerText = "";
+    resultIcon.style.backgroundImage = `url(${dataUrl})`;
+    resultDataUrl.value = dataUrl;
+  } else {
+    resultMessage.innerText = `Address ${addressInput.value} is not valid`;
+  }
+};
+
 </script>
 </body>
