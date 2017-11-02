@@ -24,6 +24,10 @@ Ethereum Address Identicon Generator
 <br/>
 <br/>
 
+Example valid address: 0xff678211C3045D7A4a2b8c9A8515C8345A80b5b6 (<a href="https://etherscan.io/address/0xff678211c3045D7A4a2b8c9A8515C8345A80b5B6">Etherscan</a>)
+<br/>
+<br/>
+
 <div id="resultMessage"></div>
 
 Icon: <br/>
@@ -40,7 +44,6 @@ const addressInput = document.getElementById("addressInput");
 const resultMessage = document.getElementById("resultMessage");
 const resultIcon = document.getElementById("resultIcon");
 const resultDataUrl = document.getElementById("resultDataUrl");
-
 
 addressInput.oninput = () => {
   const address = addressInput.value.toLowerCase();
