@@ -5,7 +5,7 @@ A tiny library for generating blocky identicons.
 
 ![Sample blockies image](sample.png "Blockies")
 
-[**Demo page**](http://download13.github.io/blockies/)
+[**Demo page**](https://joojis.github.io/blockies/)
 
 Use
 ---
